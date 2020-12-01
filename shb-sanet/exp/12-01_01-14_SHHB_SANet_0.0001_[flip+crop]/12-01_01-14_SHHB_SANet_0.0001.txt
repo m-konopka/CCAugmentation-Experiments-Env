@@ -1,0 +1,132 @@
+import os
+from easydict import EasyDict as edict
+import time
+import torch
+
+# init
+__C = edict()
+cfg = __C
+
+#------------------------------TRAIN------------------------
+__C.SEED = 3035 # random seed,  for reporduction
+__C.DATASET = 'SHHB' # dataset selection: GCC, SHHA, SHHB, UCF50, QNRF, WE
+
+if __C.DATASET == 'UCF50':# only for UCF50
+	from datasets.UCF50.setting import cfg_data
+	__C.VAL_INDEX = cfg_data.VAL_INDEX 
+
+if __C.DATASET == 'GCC':# only for GCC
+	from datasets.GCC.setting import cfg_data
+	__C.VAL_MODE = cfg_data.VAL_MODE 
+
+
+__C.NET = 'SANet' # net selection: MCNN, VGG, VGG_DECODER, Res50, CSRNet, SANet
+
+__C.PRE_GCC = False # use the pretrained model on GCC dataset
+__C.PRE_GCC_MODEL = '' # path to model
+
+__C.RESUME = False # contine training
+__C.RESUME_PATH = './exp/11-26_17-34_SHHB_SANet_0.0001/latest_state.pth' # 
+
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+
+# learning rate settings
+__C.LR = 1e-4 # learning rate
+__C.LR_DECAY = 1 # decay rate
+__C.LR_DECAY_START = -1 # when training epoch is more than it, the learning rate will be begin to decay
+__C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
+__C.MAX_EPOCH = 400
+
+# multi-task learning weights, no use for single model, such as MCNN, VGG, VGG_DECODER, Res50, CSRNet, and so on
+
+__C.LAMBDA_1 = 1e-3
+
+
+# print 
+__C.PRINT_FREQ = 30
+
+now = time.strftime("%m-%d_%H-%M", time.localtime())
+
+__C.EXP_NAME = now \
+			 + '_' + __C.DATASET \
+             + '_' + __C.NET \
+             + '_' + str(__C.LR)
+
+if __C.DATASET == 'UCF50':
+	__C.EXP_NAME += '_' + str(__C.VAL_INDEX)	
+
+if __C.DATASET == 'GCC':
+	__C.EXP_NAME += '_' + __C.VAL_MODE	
+
+__C.EXP_PATH = './exp' # the path of logs, checkpoints, and current codes
+
+
+#------------------------------VAL------------------------
+__C.VAL_DENSE_START = 200
+__C.VAL_FREQ = 10 # Before __C.VAL_DENSE_START epoches, the freq is set as __C.VAL_FREQ
+
+#------------------------------VIS------------------------
+__C.VISIBLE_NUM_IMGS = 1 #  must be 1 for training images with the different sizes
+
+
+
+#================================================================================
+#================================================================================
+#================================================================================  
+
+
+
+===============+++++++++++++++===============
+
+all_ep_001_mae_103.66_mse_149.09
+    [mae 103.66 mse 149.09], [val loss 0.0141]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_011_mae_107.16_mse_144.19
+    [mae 107.16 mse 144.19], [val loss 0.0128]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_021_mae_90.18_mse_123.77
+    [mae 90.18 mse 123.77], [val loss 0.0118]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_041_mae_83.68_mse_117.67
+    [mae 83.68 mse 117.67], [val loss 0.0107]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_061_mae_50.83_mse_78.83
+    [mae 50.83 mse 78.83], [val loss 0.0091]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_111_mae_27.62_mse_44.03
+    [mae 27.62 mse 44.03], [val loss 0.0072]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_245_mae_28.77_mse_40.04
+    [mae 28.77 mse 40.04], [val loss 0.0072]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_306_mae_26.19_mse_41.72
+    [mae 26.19 mse 41.72], [val loss 0.0070]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_397_mae_25.48_mse_35.42
+    [mae 25.48 mse 35.42], [val loss 0.0071]
+===============+++++++++++++++===============
+

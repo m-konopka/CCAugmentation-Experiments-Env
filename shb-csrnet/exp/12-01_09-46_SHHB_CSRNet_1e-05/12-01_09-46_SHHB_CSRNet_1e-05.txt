@@ -1,0 +1,278 @@
+import os
+from easydict import EasyDict as edict
+import time
+import torch
+
+# init
+__C = edict()
+cfg = __C
+
+#------------------------------TRAIN------------------------
+__C.SEED = 3035 # random seed,  for reporduction
+__C.DATASET = 'SHHB' # dataset selection: GCC, SHHA, SHHB, UCF50, UCFQNRF, WE
+
+if __C.DATASET == 'UCF50':# only for UCF50
+	from datasets.UCF50.setting import cfg_data
+	__C.VAL_INDEX = cfg_data.VAL_INDEX 
+
+if __C.DATASET == 'GCC':# only for GCC
+	from datasets.GCC.setting import cfg_data
+	__C.VAL_MODE = cfg_data.VAL_MODE 
+
+
+__C.NET = 'CSRNet' # net selection: MCNN, VGG, VGG_DECODER, CSRNet
+
+__C.PRE_GCC = False # use the pretrained model on GCC dataset
+__C.PRE_GCC_MODEL = '' # path to model
+
+__C.RESUME = False # contine training
+__C.RESUME_PATH = './exp/11-29_21-24_SHHB_CSRNet_1e-05/latest_state.pth' # 
+
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+
+# learning rate settings
+__C.LR = 1e-5 # learning rate
+__C.LR_DECAY = 0.995 # decay rate
+__C.LR_DECAY_START = -1 # when training epoch is more than it, the learning rate will be begin to decay
+__C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
+__C.MAX_EPOCH = 710
+
+# print 
+__C.PRINT_FREQ = 10
+
+now = time.strftime("%m-%d_%H-%M", time.localtime())
+
+__C.EXP_NAME = now \
+			 + '_' + __C.DATASET \
+             + '_' + __C.NET \
+             + '_' + str(__C.LR)
+
+if __C.DATASET == 'UCF50':
+	__C.EXP_NAME += '_' + str(__C.VAL_INDEX)	
+
+if __C.DATASET == 'GCC':
+	__C.EXP_NAME += '_' + __C.VAL_MODE	
+
+__C.EXP_PATH = './exp' # the path of logs, checkpoints, and current codes
+
+
+#------------------------------VAL------------------------
+__C.VAL_DENSE_START = 50
+__C.VAL_FREQ = 5 # Before __C.VAL_DENSE_START epoches, the freq is set as __C.VAL_FREQ
+
+#------------------------------VIS------------------------
+__C.VISIBLE_NUM_IMGS = 1 #  must be 1 for training images with the different sizes
+
+
+
+#================================================================================
+#================================================================================
+#================================================================================  
+
+
+
+===============+++++++++++++++===============
+
+all_ep_001_mae_47.27_mse_66.61
+    [mae 47.27 mse 66.61], [val loss 0.0116]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_006_mae_26.16_mse_35.73
+    [mae 26.16 mse 35.73], [val loss 0.0087]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_011_mae_18.29_mse_32.96
+    [mae 18.29 mse 32.96], [val loss 0.0082]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_046_mae_16.59_mse_32.19
+    [mae 16.59 mse 32.19], [val loss 0.0078]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_051_mae_16.70_mse_30.99
+    [mae 16.70 mse 30.99], [val loss 0.0078]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_053_mae_14.99_mse_26.40
+    [mae 14.99 mse 26.40], [val loss 0.0076]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_059_mae_17.49_mse_26.28
+    [mae 17.49 mse 26.28], [val loss 0.0077]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_065_mae_15.79_mse_25.59
+    [mae 15.79 mse 25.59], [val loss 0.0076]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_070_mae_15.37_mse_23.71
+    [mae 15.37 mse 23.71], [val loss 0.0075]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_076_mae_15.19_mse_21.48
+    [mae 15.19 mse 21.48], [val loss 0.0075]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_086_mae_14.71_mse_26.24
+    [mae 14.71 mse 26.24], [val loss 0.0076]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_088_mae_14.07_mse_21.58
+    [mae 14.07 mse 21.58], [val loss 0.0074]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_109_mae_13.87_mse_21.76
+    [mae 13.87 mse 21.76], [val loss 0.0074]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_121_mae_13.46_mse_23.41
+    [mae 13.46 mse 23.41], [val loss 0.0074]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_127_mae_13.90_mse_20.37
+    [mae 13.90 mse 20.37], [val loss 0.0074]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_128_mae_13.06_mse_19.66
+    [mae 13.06 mse 19.66], [val loss 0.0074]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_136_mae_12.62_mse_21.11
+    [mae 12.62 mse 21.11], [val loss 0.0073]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_169_mae_10.91_mse_18.59
+    [mae 10.91 mse 18.59], [val loss 0.0072]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_318_mae_11.00_mse_18.23
+    [mae 11.00 mse 18.23], [val loss 0.0071]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_353_mae_12.46_mse_17.81
+    [mae 12.46 mse 17.81], [val loss 0.0071]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_407_mae_10.58_mse_17.94
+    [mae 10.58 mse 17.94], [val loss 0.0071]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_418_mae_9.61_mse_16.63
+    [mae 9.61 mse 16.63], [val loss 0.0070]
+===============+++++++++++++++===============
+
+import os
+from easydict import EasyDict as edict
+import time
+import torch
+
+# init
+__C = edict()
+cfg = __C
+
+#------------------------------TRAIN------------------------
+__C.SEED = 3035 # random seed,  for reporduction
+__C.DATASET = 'SHHB' # dataset selection: GCC, SHHA, SHHB, UCF50, UCFQNRF, WE
+
+if __C.DATASET == 'UCF50':# only for UCF50
+	from datasets.UCF50.setting import cfg_data
+	__C.VAL_INDEX = cfg_data.VAL_INDEX 
+
+if __C.DATASET == 'GCC':# only for GCC
+	from datasets.GCC.setting import cfg_data
+	__C.VAL_MODE = cfg_data.VAL_MODE 
+
+
+__C.NET = 'CSRNet' # net selection: MCNN, VGG, VGG_DECODER, CSRNet
+
+__C.PRE_GCC = False # use the pretrained model on GCC dataset
+__C.PRE_GCC_MODEL = '' # path to model
+
+__C.RESUME = True # contine training
+__C.RESUME_PATH = './exp/12-01_09-46_SHHB_CSRNet_1e-05/latest_state.pth' # 
+
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+
+# learning rate settings
+__C.LR = 1e-5 # learning rate
+__C.LR_DECAY = 0.995 # decay rate
+__C.LR_DECAY_START = -1 # when training epoch is more than it, the learning rate will be begin to decay
+__C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
+__C.MAX_EPOCH = 800
+
+# print 
+__C.PRINT_FREQ = 10
+
+now = time.strftime("%m-%d_%H-%M", time.localtime())
+
+__C.EXP_NAME = now \
+			 + '_' + __C.DATASET \
+             + '_' + __C.NET \
+             + '_' + str(__C.LR)
+
+if __C.DATASET == 'UCF50':
+	__C.EXP_NAME += '_' + str(__C.VAL_INDEX)	
+
+if __C.DATASET == 'GCC':
+	__C.EXP_NAME += '_' + __C.VAL_MODE	
+
+__C.EXP_PATH = './exp' # the path of logs, checkpoints, and current codes
+
+
+#------------------------------VAL------------------------
+__C.VAL_DENSE_START = 50
+__C.VAL_FREQ = 5 # Before __C.VAL_DENSE_START epoches, the freq is set as __C.VAL_FREQ
+
+#------------------------------VIS------------------------
+__C.VISIBLE_NUM_IMGS = 1 #  must be 1 for training images with the different sizes
+
+
+
+#================================================================================
+#================================================================================
+#================================================================================  
+
+
+

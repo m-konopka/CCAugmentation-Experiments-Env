@@ -1,0 +1,139 @@
+import os
+from easydict import EasyDict as edict
+import time
+import torch
+
+# init
+__C = edict()
+cfg = __C
+
+#------------------------------TRAIN------------------------
+__C.SEED = 3035 # random seed,  for reporduction
+__C.DATASET = 'SHHB' # dataset selection: SHHA, SHHB, UCF50, UCFQNRF, WE
+
+if __C.DATASET == 'UCF50':# only for UCF50
+	from datasets.UCF50.setting import cfg_data
+	__C.VAL_INDEX = cfg_data.VAL_INDEX 
+
+if __C.DATASET == 'GCC':# only for GCC
+	from datasets.GCC.setting import cfg_data
+	__C.VAL_MODE = cfg_data.VAL_MODE 
+
+
+__C.NET = 'MCNN' # net selection: MCNN, VGG, VGG_DECODER
+
+__C.PRE_GCC = False # use the pretrained model on GCC dataset
+__C.PRE_GCC_MODEL = '' # path to model
+
+__C.RESUME = False # contine training
+__C.RESUME_PATH = './exp/04-25_09-19_SHHB_VGG_1e-05/latest_state.pth' # 
+
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+
+# learning rate settings
+__C.LR = 1e-4 # learning rate
+__C.LR_DECAY = 0.99 # decay rate
+__C.LR_DECAY_START = 100 # when training epoch is more than it, the learning rate will be begin to decay
+__C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
+__C.MAX_EPOCH = 200
+
+# print 
+__C.PRINT_FREQ = 10
+
+now = time.strftime("%m-%d_%H-%M", time.localtime())
+
+__C.EXP_NAME = now \
+			 + '_' + __C.DATASET \
+             + '_' + __C.NET \
+             + '_' + str(__C.LR)
+
+if __C.DATASET == 'UCF50':
+	__C.EXP_NAME += '_' + str(__C.VAL_INDEX)	
+
+if __C.DATASET == 'GCC':
+	__C.EXP_NAME += '_' + __C.VAL_MODE	
+
+__C.EXP_PATH = './exp' # the path of logs, checkpoints, and current codes
+
+
+#------------------------------VAL------------------------
+__C.VAL_DENSE_START = 100
+__C.VAL_FREQ = 10 # Before __C.VAL_DENSE_START epoches, the freq is set as __C.VAL_FREQ
+
+#------------------------------VIS------------------------
+__C.VISIBLE_NUM_IMGS = 1 #  must be 1 for training images with the different sizes
+
+
+
+#================================================================================
+#================================================================================
+#================================================================================  
+
+
+
+===============+++++++++++++++===============
+
+all_ep_001_mae_70.71_mse_113.61
+    [mae 70.71 mse 113.61], [val loss 0.0138]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_011_mae_51.38_mse_91.24
+    [mae 51.38 mse 91.24], [val loss 0.0111]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_021_mae_51.93_mse_85.56
+    [mae 51.93 mse 85.56], [val loss 0.0101]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_031_mae_34.54_mse_62.86
+    [mae 34.54 mse 62.86], [val loss 0.0096]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_041_mae_34.32_mse_63.92
+    [mae 34.32 mse 63.92], [val loss 0.0091]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_051_mae_31.94_mse_59.18
+    [mae 31.94 mse 59.18], [val loss 0.0091]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_061_mae_21.47_mse_38.81
+    [mae 21.47 mse 38.81], [val loss 0.0088]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_071_mae_25.43_mse_36.66
+    [mae 25.43 mse 36.66], [val loss 0.0086]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_102_mae_21.38_mse_39.31
+    [mae 21.38 mse 39.31], [val loss 0.0085]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_144_mae_18.36_mse_29.42
+    [mae 18.36 mse 29.42], [val loss 0.0082]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_168_mae_17.00_mse_29.09
+    [mae 17.00 mse 29.09], [val loss 0.0080]
+===============+++++++++++++++===============
+

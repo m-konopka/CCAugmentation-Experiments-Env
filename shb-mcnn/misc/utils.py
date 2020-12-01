@@ -103,7 +103,7 @@ def logger_txt(log_file,epoch,scores):
 
     mae, mse, loss = scores
 
-    snapshot_name = 'all_ep_%03d_mae_%.1f_mse_%.1f' % (epoch + 1, mae, mse)
+    snapshot_name = 'all_ep_%03d_mae_%.2f_mse_%.2f' % (epoch + 1, mae, mse)
 
     # pdb.set_trace()
 
@@ -208,9 +208,10 @@ def update_model(net,optimizer,scheduler,epoch,i_tb,exp_path,exp_name,scores,tra
 
     mae, mse, loss = scores
 
-    snapshot_name = 'all_ep_%03d_mae_%.1f_mse_%.1f' % (epoch + 1, mae, mse)
+    snapshot_name = 'all_ep_%03d_mae_%.2f_mse_%.2f' % (epoch + 1, mae, mse)
 
-    if mae < train_record['best_mae'] or mse < train_record['best_mse']:   
+#     if mae * mse < train_record['best_mae'] * train_record['best_mse']: 
+    if mae < train_record['best_mae'] or mse < train_record['best_mse']:
         train_record['best_model_name'] = snapshot_name
         if log_file is not None:
             logger_txt(log_file,epoch,scores)
@@ -222,6 +223,8 @@ def update_model(net,optimizer,scheduler,epoch,i_tb,exp_path,exp_name,scores,tra
             for file in weights_files[:-3]:
                 os.remove(file)
 
+#         train_record['best_mae'] = mae
+#         train_record['best_mse'] = mse
     if mae < train_record['best_mae']:           
         train_record['best_mae'] = mae
     if mse < train_record['best_mse']:
