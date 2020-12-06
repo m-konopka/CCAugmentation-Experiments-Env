@@ -33,10 +33,6 @@ def loading_data():
     val_pipeline = cca.Pipeline(
         cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "test", "B"),
         [
-#             cca.operations.Duplicate(6),
-#             ccat.FlipLR(),
-#             ccat.Crop(None, None, 1/4, 1/4),
-#             cca.operations.RandomArgs(ccat.Rotate, {}, {"angle": (-10, 10)})
         ]
     ).execute_generate()
     val_loader = DataLoader(CustomDataset(val_pipeline), batch_size=cfg_data.VAL_BATCH_SIZE, num_workers=1, drop_last=False)
