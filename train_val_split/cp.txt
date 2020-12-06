@@ -1,0 +1,1 @@
+cp -r ShanghaiTech_0.1 /dataset/
