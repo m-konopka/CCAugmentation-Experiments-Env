@@ -35,7 +35,7 @@ Below we present example prediction for CSRNet model.
 ```
 @inproceedings{ccaugmentation,
   title={Data preprocessing and augmentation framework for crowd counting with convolutional neural network},
-  author={Marcin Konopka, Piotr Juszczyk},
+  author={Konopka, Marcin and Juszczyk, Piotr},
   year={2020}
 }
 ```
