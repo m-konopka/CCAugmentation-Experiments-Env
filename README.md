@@ -4,7 +4,7 @@ Repository with code relevant to the engineering thesis realized at Gdansk Unive
 
 Implementation of crowd counting models is based on [C^3 Framework](https://github.com/gjy3035/C-3-Framework).
 
-The repository is an experiment environment for [CCAugmentation Framework](https://github.com/pijuszczyk/CCAugmentation).
+This repository is an experiment environment for [CCAugmentation Framework](https://github.com/pijuszczyk/CCAugmentation).
 
 ## Preparation
 - Prerequisites
