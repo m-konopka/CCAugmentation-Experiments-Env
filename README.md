@@ -45,7 +45,7 @@ We obtained the following results on ShanghaiTech part B dataset. To reproduce i
 
 Below we present an example prediction for the CSRNet model.
 
-![img](./img/csrnet_9.84_15.14.png)
+![img](./img/mcnn_output_15.62_23.93.png)
 
 ## Citation
 
