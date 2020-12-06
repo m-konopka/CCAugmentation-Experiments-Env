@@ -16,7 +16,7 @@ This repository is an experiment environment for [CCAugmentation Framework](http
   - We use 90/10 split for test/validation set
   - In order to replicated it please run `./train_val_split/train_val_split.ipynb`
   - Please make the following changes:
-    - in `./*/load_data.py`: path `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "train", "B")` to point to your training set; `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "test", "B")` to point to your validation set
+    - in `./*/load_data.py`: change path `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "train", "B")` to point to your training set; `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "test", "B")` to point to your validation set
     - in `./*/vis-*.ipynb`: `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech", "test", "B")` to point to your test set
 
 ## Reproduction
