@@ -1,0 +1,248 @@
+import os
+from easydict import EasyDict as edict
+import time
+import torch
+
+# init
+__C = edict()
+cfg = __C
+
+#------------------------------TRAIN------------------------
+__C.SEED = 3035 # random seed,  for reporduction
+__C.DATASET = 'SHHB' # dataset selection: SHHA, SHHB, UCF50, UCFQNRF, WE
+
+if __C.DATASET == 'UCF50':# only for UCF50
+	from datasets.UCF50.setting import cfg_data
+	__C.VAL_INDEX = cfg_data.VAL_INDEX 
+
+if __C.DATASET == 'GCC':# only for GCC
+	from datasets.GCC.setting import cfg_data
+	__C.VAL_MODE = cfg_data.VAL_MODE 
+
+
+__C.NET = 'MCNN' # net selection: MCNN, VGG, VGG_DECODER
+
+__C.PRE_GCC = False # use the pretrained model on GCC dataset
+__C.PRE_GCC_MODEL = '' # path to model
+
+__C.RESUME = False # contine training
+__C.RESUME_PATH = './exp/04-25_09-19_SHHB_VGG_1e-05/latest_state.pth' # 
+
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+
+# learning rate settings
+__C.LR = 1e-4 # learning rate
+__C.LR_DECAY = 0.995 # decay rate
+__C.LR_DECAY_START = -1 # when training epoch is more than it, the learning rate will be begin to decay
+__C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
+__C.MAX_EPOCH = 500
+
+# print 
+__C.PRINT_FREQ = 10
+
+now = time.strftime("%m-%d_%H-%M", time.localtime())
+
+__C.EXP_NAME = now \
+			 + '_' + __C.DATASET \
+             + '_' + __C.NET \
+             + '_' + str(__C.LR)
+
+if __C.DATASET == 'UCF50':
+	__C.EXP_NAME += '_' + str(__C.VAL_INDEX)	
+
+if __C.DATASET == 'GCC':
+	__C.EXP_NAME += '_' + __C.VAL_MODE	
+
+__C.EXP_PATH = './exp' # the path of logs, checkpoints, and current codes
+
+
+#------------------------------VAL------------------------
+__C.VAL_DENSE_START = 100
+__C.VAL_FREQ = 10 # Before __C.VAL_DENSE_START epoches, the freq is set as __C.VAL_FREQ
+
+#------------------------------VIS------------------------
+__C.VISIBLE_NUM_IMGS = 1 #  must be 1 for training images with the different sizes
+
+
+
+#================================================================================
+#================================================================================
+#================================================================================  
+
+
+
+===============+++++++++++++++===============
+
+all_ep_001_mae_75.23_mse_120.78
+    [mae 75.23 mse 120.78], [val loss 0.0139]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_021_mae_61.17_mse_99.74
+    [mae 61.17 mse 99.74], [val loss 0.0113]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_041_mae_46.19_mse_81.31
+    [mae 46.19 mse 81.31], [val loss 0.0102]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_071_mae_28.17_mse_51.88
+    [mae 28.17 mse 51.88], [val loss 0.0094]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_103_mae_28.75_mse_50.21
+    [mae 28.75 mse 50.21], [val loss 0.0091]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_107_mae_27.98_mse_55.89
+    [mae 27.98 mse 55.89], [val loss 0.0091]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_119_mae_23.52_mse_46.05
+    [mae 23.52 mse 46.05], [val loss 0.0090]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_125_mae_24.72_mse_41.32
+    [mae 24.72 mse 41.32], [val loss 0.0089]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_180_mae_23.75_mse_35.50
+    [mae 23.75 mse 35.50], [val loss 0.0087]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_187_mae_21.97_mse_39.17
+    [mae 21.97 mse 39.17], [val loss 0.0086]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_271_mae_21.22_mse_42.05
+    [mae 21.22 mse 42.05], [val loss 0.0083]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_308_mae_20.65_mse_39.65
+    [mae 20.65 mse 39.65], [val loss 0.0082]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_423_mae_21.45_mse_32.59
+    [mae 21.45 mse 32.59], [val loss 0.0086]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_448_mae_19.14_mse_36.40
+    [mae 19.14 mse 36.40], [val loss 0.0081]
+===============+++++++++++++++===============
+
+import os
+from easydict import EasyDict as edict
+import time
+import torch
+
+# init
+__C = edict()
+cfg = __C
+
+#------------------------------TRAIN------------------------
+__C.SEED = 3035 # random seed,  for reporduction
+__C.DATASET = 'SHHB' # dataset selection: SHHA, SHHB, UCF50, UCFQNRF, WE
+
+if __C.DATASET == 'UCF50':# only for UCF50
+	from datasets.UCF50.setting import cfg_data
+	__C.VAL_INDEX = cfg_data.VAL_INDEX 
+
+if __C.DATASET == 'GCC':# only for GCC
+	from datasets.GCC.setting import cfg_data
+	__C.VAL_MODE = cfg_data.VAL_MODE 
+
+
+__C.NET = 'MCNN' # net selection: MCNN, VGG, VGG_DECODER
+
+__C.PRE_GCC = False # use the pretrained model on GCC dataset
+__C.PRE_GCC_MODEL = '' # path to model
+
+__C.RESUME = True # contine training
+__C.RESUME_PATH = './exp/12-03_05-30_SHHB_MCNN_0.0001/latest_state.pth' # 
+
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+
+# learning rate settings
+__C.LR = 1e-4 # learning rate
+__C.LR_DECAY = 0.995 # decay rate
+__C.LR_DECAY_START = -1 # when training epoch is more than it, the learning rate will be begin to decay
+__C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
+__C.MAX_EPOCH = 800
+
+# print 
+__C.PRINT_FREQ = 10
+
+now = time.strftime("%m-%d_%H-%M", time.localtime())
+
+__C.EXP_NAME = now \
+			 + '_' + __C.DATASET \
+             + '_' + __C.NET \
+             + '_' + str(__C.LR)
+
+if __C.DATASET == 'UCF50':
+	__C.EXP_NAME += '_' + str(__C.VAL_INDEX)	
+
+if __C.DATASET == 'GCC':
+	__C.EXP_NAME += '_' + __C.VAL_MODE	
+
+__C.EXP_PATH = './exp' # the path of logs, checkpoints, and current codes
+
+
+#------------------------------VAL------------------------
+__C.VAL_DENSE_START = 100
+__C.VAL_FREQ = 10 # Before __C.VAL_DENSE_START epoches, the freq is set as __C.VAL_FREQ
+
+#------------------------------VIS------------------------
+__C.VISIBLE_NUM_IMGS = 1 #  must be 1 for training images with the different sizes
+
+
+
+#================================================================================
+#================================================================================
+#================================================================================  
+
+
+
+===============+++++++++++++++===============
+
+all_ep_519_mae_20.31_mse_31.58
+    [mae 20.31 mse 31.58], [val loss 0.0080]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_537_mae_18.98_mse_34.96
+    [mae 18.98 mse 34.96], [val loss 0.0080]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_603_mae_18.77_mse_35.42
+    [mae 18.77 mse 35.42], [val loss 0.0080]
+===============+++++++++++++++===============
+

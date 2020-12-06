@@ -32,8 +32,6 @@ def loading_data():
     val_pipeline = cca.Pipeline(
         cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "test", "B"),
         [
-#             ccat.Normalize("samplewise_centering"),
-#             ccat.Normalize("samplewise_std_normalization")
         ]
     ).execute_generate()
     val_loader = DataLoader(CustomDataset(val_pipeline), batch_size=cfg_data.VAL_BATCH_SIZE, num_workers=1, drop_last=False)

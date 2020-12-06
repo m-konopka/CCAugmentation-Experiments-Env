@@ -22,15 +22,7 @@ class CustomDataset(IterableDataset):
 def loading_data():
     train_pipeline = cca.Pipeline(
         cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "train", "B"),
-        [
-#             ccat.FlipLR()
-#             cca.operations.Duplicate(10),
-#             ccat.Crop(None, None, 1/4, 1/4)
-#             cca.operations.RandomArgs(ccat.Rotate, {}, {"angle": (-30, 30)})
-#             ccat.Normalize("range_-1_to_1")          
-#             ccat.Normalize("samplewise_centering"),
-#             ccat.Normalize("samplewise_std_normalization")
-            
+        [       
             ccat.ToGrayscale()
         ]
     ).execute_generate()
@@ -38,11 +30,7 @@ def loading_data():
 
     val_pipeline = cca.Pipeline(
         cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "test", "B"),
-        [
-#             ccat.Normalize("range_-1_to_1")
-#             ccat.Normalize("samplewise_centering"),
-#             ccat.Normalize("samplewise_std_normalization")
-            
+        [         
             ccat.ToGrayscale()
         ]
     ).execute_generate()

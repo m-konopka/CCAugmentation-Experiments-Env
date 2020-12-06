@@ -218,10 +218,10 @@ def update_model(net,optimizer,scheduler,epoch,i_tb,exp_path,exp_name,scores,tra
         to_saved_weight = net.state_dict()
         torch.save(to_saved_weight, os.path.join(exp_path, exp_name, snapshot_name + '.pth'))
         
-        weights_files = sorted(glob(os.path.join(exp_path, exp_name, '*.pth')))
-        if len(weights_files) > 3:
-            for file in weights_files[:-3]:
-                os.remove(file)
+#         weights_files = sorted(glob(os.path.join(exp_path, exp_name, '*.pth')))
+#         if len(weights_files) > 3:
+#             for file in weights_files[:-3]:
+#                 os.remove(file)
 
 #         train_record['best_mae'] = mae
 #         train_record['best_mse'] = mse

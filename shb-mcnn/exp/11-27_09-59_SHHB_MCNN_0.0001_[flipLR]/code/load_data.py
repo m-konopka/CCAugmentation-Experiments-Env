@@ -24,7 +24,6 @@ def loading_data():
         cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "train", "B"),
         [
             ccat.FlipLR()
-#             ccat.Normalize("samplewise_centering")
         ]
     ).execute_generate()
     train_loader = DataLoader(CustomDataset(train_pipeline), batch_size=cfg_data.TRAIN_BATCH_SIZE, num_workers=1, drop_last=True)

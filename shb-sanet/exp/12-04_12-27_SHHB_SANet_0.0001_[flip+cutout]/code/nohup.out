@@ -1,0 +1,13 @@
+2020-12-03 23:02:49.331624: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+2020-12-03 23:02:49.331667: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Serving TensorBoard on localhost; to expose to the network, use a proxy or pass --bind_all
+TensorBoard 2.4.0 at http://localhost:6004/ (Press CTRL+C to quit)
+W1204 06:41:10.045202 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '11-26_23-01_SHHB_SANet_0.0001_[noAug]'
+W1204 06:41:10.045641 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '11-26_20-44_SHHB_SANet_0.0001_[noAug]'
+W1204 06:41:17.899779 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '12-01_02-42_SHHB_SANet_0.0001_[flip+crop]'
+W1204 06:41:17.899901 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '12-01_01-14_SHHB_SANet_0.0001_[flip+crop]'
+W1204 06:47:29.504532 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/11-26_20-44_SHHB_SANet_0.0001_[noAug]'
+W1204 06:47:29.504704 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/12-01_02-42_SHHB_SANet_0.0001_[flip+crop]'
+W1204 06:47:29.504776 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/12-01_01-14_SHHB_SANet_0.0001_[flip+crop]'
+W1204 06:47:29.504842 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/11-26_23-01_SHHB_SANet_0.0001_[noAug]'
+W1204 08:49:55.339910 140216352016128 plugin_event_multiplexer.py:263] Deleting accumulator '12-04_06-44_SHHB_SANet_1e-05'

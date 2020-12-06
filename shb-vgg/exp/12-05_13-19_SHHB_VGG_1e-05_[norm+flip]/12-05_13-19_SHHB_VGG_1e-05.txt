@@ -1,0 +1,157 @@
+import os
+from easydict import EasyDict as edict
+import time
+import torch
+
+# init
+__C = edict()
+cfg = __C
+
+#------------------------------TRAIN------------------------
+__C.SEED = 3035 # random seed,  for reporduction
+__C.DATASET = 'SHHB' # dataset selection: SHHA, SHHB, UCF50, UCFQNRF, WE
+
+if __C.DATASET == 'UCF50':# only for UCF50
+	from datasets.UCF50.setting import cfg_data
+	__C.VAL_INDEX = cfg_data.VAL_INDEX 
+
+if __C.DATASET == 'GCC':# only for GCC
+	from datasets.GCC.setting import cfg_data
+	__C.VAL_MODE = cfg_data.VAL_MODE 
+
+
+__C.NET = 'VGG' # net selection: MCNN, VGG, VGG_DECODER
+
+__C.PRE_GCC = False # use the pretrained model on GCC dataset
+__C.PRE_GCC_MODEL = '' # path to model
+
+__C.RESUME = False # contine training
+__C.RESUME_PATH = './exp/11-25_03-46_SHHB_VGG_1e-05/latest_state.pth' # 
+
+__C.GPU_ID = [0] # sigle gpu: [0], [1] ...; multi gpus: [0,1]
+
+# learning rate settings
+__C.LR = 1e-5 # learning rate
+__C.LR_DECAY = 0.995 # decay rate
+__C.LR_DECAY_START = -1 # when training epoch is more than it, the learning rate will be begin to decay
+__C.NUM_EPOCH_LR_DECAY = 1 # decay frequency
+__C.MAX_EPOCH = 100
+
+# print 
+__C.PRINT_FREQ = 10
+
+now = time.strftime("%m-%d_%H-%M", time.localtime())
+
+__C.EXP_NAME = now \
+			 + '_' + __C.DATASET \
+             + '_' + __C.NET \
+             + '_' + str(__C.LR)
+
+if __C.DATASET == 'UCF50':
+	__C.EXP_NAME += '_' + str(__C.VAL_INDEX)	
+
+if __C.DATASET == 'GCC':
+	__C.EXP_NAME += '_' + __C.VAL_MODE	
+
+__C.EXP_PATH = './exp' # the path of logs, checkpoints, and current codes
+
+
+#------------------------------VAL------------------------
+__C.VAL_DENSE_START = 50
+__C.VAL_FREQ = 5 # Before __C.VAL_DENSE_START epoches, the freq is set as __C.VAL_FREQ
+
+#------------------------------VIS------------------------
+__C.VISIBLE_NUM_IMGS = 1 #  must be 1 for training images with the different sizes
+
+
+
+#================================================================================
+#================================================================================
+#================================================================================  
+
+
+
+===============+++++++++++++++===============
+
+all_ep_001_mae_34.35_mse_61.51
+    [mae 34.35 mse 61.51], [val loss 101.2852]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_006_mae_32.09_mse_46.09
+    [mae 32.09 mse 46.09], [val loss 81.9690]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_011_mae_26.68_mse_37.53
+    [mae 26.68 mse 37.53], [val loss 77.6342]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_016_mae_27.31_mse_37.16
+    [mae 27.31 mse 37.16], [val loss 75.2978]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_021_mae_23.08_mse_32.28
+    [mae 23.08 mse 32.28], [val loss 73.8424]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_031_mae_21.47_mse_30.55
+    [mae 21.47 mse 30.55], [val loss 72.2688]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_036_mae_18.09_mse_27.08
+    [mae 18.09 mse 27.08], [val loss 72.0207]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_046_mae_16.56_mse_25.67
+    [mae 16.56 mse 25.67], [val loss 71.5919]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_051_mae_15.99_mse_25.78
+    [mae 15.99 mse 25.78], [val loss 71.6151]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_052_mae_14.99_mse_24.30
+    [mae 14.99 mse 24.30], [val loss 71.6494]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_061_mae_14.49_mse_23.97
+    [mae 14.49 mse 23.97], [val loss 71.8410]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_063_mae_13.32_mse_22.36
+    [mae 13.32 mse 22.36], [val loss 71.4837]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_066_mae_13.41_mse_22.31
+    [mae 13.41 mse 22.31], [val loss 71.9195]
+===============+++++++++++++++===============
+
+===============+++++++++++++++===============
+
+all_ep_067_mae_9.20_mse_16.75
+    [mae 9.20 mse 16.75], [val loss 72.0591]
+===============+++++++++++++++===============
+

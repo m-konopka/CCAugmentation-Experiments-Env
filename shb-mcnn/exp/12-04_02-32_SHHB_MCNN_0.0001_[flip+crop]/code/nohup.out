@@ -1,0 +1,6 @@
+2020-12-03 23:02:49.347078: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+2020-12-03 23:02:49.347123: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Serving TensorBoard on localhost; to expose to the network, use a proxy or pass --bind_all
+TensorBoard 2.4.0 at http://localhost:6001/ (Press CTRL+C to quit)
+W1203 23:06:29.228676 140280656410368 plugin_event_multiplexer.py:263] Deleting accumulator '12-03_08-25_SHHB_MCNN_0.0001'
+W1203 23:06:29.228959 140280656410368 plugin_event_multiplexer.py:263] Deleting accumulator '12-03_07-40_SHHB_MCNN_0.0001'

@@ -1,0 +1,17 @@
+2020-12-03 23:02:49.276346: W tensorflow/stream_executor/platform/default/dso_loader.cc:59] Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+2020-12-03 23:02:49.276393: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Serving TensorBoard on localhost; to expose to the network, use a proxy or pass --bind_all
+TensorBoard 2.4.0 at http://localhost:6003/ (Press CTRL+C to quit)
+W1204 01:46:59.453567 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '12-03_19-54_SHHB_VGG_1e-05'
+W1204 05:27:41.338819 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '12-04_03-59_SHHB_VGG_1e-05'
+W1204 06:36:46.509902 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '12-04_04-02_SHHB_VGG_1e-05'
+W1204 06:36:57.580295 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '11-27_03-14_SHHB_VGG_1e-05_[noAug]'
+W1204 06:36:57.580419 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '11-30_23-27_SHHB_VGG_1e-05_[flip+crop]'
+W1204 06:36:57.580456 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '11-27_05-10_SHHB_VGG_1e-05_[noAug]'
+W1204 06:36:57.580491 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '12-01_05-28_SHHB_VGG_1e-05_[flip+crop]'
+W1204 06:47:59.574539 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/11-27_05-10_SHHB_VGG_1e-05_[noAug]'
+W1204 06:47:59.574687 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/11-27_03-14_SHHB_VGG_1e-05_[noAug]'
+W1204 06:47:59.574748 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/12-01_05-28_SHHB_VGG_1e-05_[flip+crop]'
+W1204 06:47:59.574814 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '_add_runs/11-30_23-27_SHHB_VGG_1e-05_[flip+crop]'
+W1205 23:42:50.661278 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '12-05_11-01_SHHB_VGG_1e-05'
+W1205 23:43:00.951343 140629848622848 plugin_event_multiplexer.py:263] Deleting accumulator '12-05_13-19_SHHB_VGG_1e-05'
