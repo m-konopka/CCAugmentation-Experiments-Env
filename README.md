@@ -21,7 +21,7 @@ The repository is an experiment environment for [CCAugmentation Framework](https
 
 ## Reproduction
  
-To reproduce our results please apply settings specified in `./best-profiles`. You can also apply trained weights, which are placed in the same localization.
+To reproduce our results please apply settings specified in `./best-profiles`. You can also use trained weights, which are placed in the same location.
 
 ## Results
 
