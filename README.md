@@ -79,7 +79,7 @@ For further information about possible data augmentation operation please see [C
 
 ## Example predictions
 
-Below we present an example prediction for the CSRNet model.
+Below we present an example prediction for the MCNN model.
 
 ![img](./img/mcnn_output_15.62_23.93.png)
 
