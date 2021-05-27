@@ -1,6 +1,6 @@
 # Data preprocessing and augmentation framework for crowd counting with convolutional neural network
 
-Repository with code relevant to the engineering thesis realized at Gdansk University of Technology.
+Repository with code relevant to the engineering thesis "Data preprocessing and augmentation framework for crowd counting with convolutional neural network" realized at Gdansk University of Technology, Faculty of Electronics, Telecommunications and Informatics.
 
 Implementation of crowd counting models is based on [C^3 Framework](https://github.com/gjy3035/C-3-Framework).
 
