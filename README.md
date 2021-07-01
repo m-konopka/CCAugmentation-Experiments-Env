@@ -18,15 +18,13 @@ This repository is an experiment environment for [CCAugmentation Framework](http
 - Paths
   - Please make the following changes:
     - in `./*/load_data.py`: change path `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "train", "B")` to point to your training set; `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech_0.1", "test", "B")` to point to your validation set
-    - in `./*/vis-*.ipynb`: `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech", "test", "B")` to point to your test set
+    - in `./*/calculate_test_perf.ipynb`: `cca.examples.loading.SHHLoader("/dataset/ShanghaiTech", "test", "B")` to point to your test set
 
 ## Reproduction
  
-To reproduce our results please apply settings specified in `./best-profiles`. You can also use trained weights, which are placed in the same location.
+To reproduce our results please apply settings specified in `./best-profiles`. You can also use trained models, which are placed in the same location.
 
 ## Results
-
-We obtained the following results on ShanghaiTech part B dataset. To reproduce it please apply settings `./best-profiles/`.
 
 |         |                                    | MAE   | RMSE  |
 |---------|------------------------------------|-------|-------|
@@ -74,8 +72,6 @@ def loading_data():
     
     return train_loader, val_loader, lambda x: x
 ```
-
-For further information about possible data augmentation operation please see [CCAugmentation Framework](https://github.com/pijuszczyk/CCAugmentation).
 
 ## Example predictions
 
